@@ -144,3 +144,9 @@ sudo pip install flask-sqlalchemy
 安装 Python 开发环境：
 
 sudo apt-get install -y python python-dev python-pip python-virtualenv
+
+
+#安装scrapy
+sudo apt-get install libxml2-dev libxslt1-dev
+sudo pip install lxml
+sudo pip install Scrapy
