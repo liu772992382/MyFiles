@@ -141,3 +141,6 @@ sudo apt-get install python-dev
 sudo pip install flask-sqlalchemy
 
 
+安装 Python 开发环境：
+
+sudo apt-get install -y python python-dev python-pip python-virtualenv
