@@ -150,3 +150,46 @@ sudo apt-get install -y python python-dev python-pip python-virtualenv
 sudo apt-get install libxml2-dev libxslt1-dev
 sudo pip install lxml
 sudo pip install Scrapy
+
+
+#配置vpn
+1.第一步需要安装PPTP，以用来提供VPN服务.
+a)sudo apt-get install pptpd
+b)如果有问题的话比如提示找不到之类的，apt-get update 一下应该就可以了，然后再来一次就会自动完成安装。
+
+2.装好了之后我们需要进行配置一下以让它可以使用.
+a)sudo vi /etc/pptpd.conf
+b)取消掉以下 2 行的注释：
+i.localip 192.168.0.1
+192.168.0.1 改成VPS的外网独立IP
+ii.remoteip 192.168.0.234-238,192.168.0.245
+“192.168.0.234-238,192.168.0.245”改成分配给用户的IP段：
+例如：10.10.10.100-200
+
+3.然后我们需要分配账号给自己使用.
+a)sudo vi /etc/ppp/chap-secrets
+b)添加账户：
+i.例如：test	pptpd	“123”	*
+格式：用户名（tab键）协议（tab键）“密码”（tab键）*
+PS：密码用引号引起,最后的*号表示允许在任意IP连接到服务
+
+4.重启pptpd服务
+a)sudo service pptpd restart
+5.配置DNS
+a)sudo vi /etc/ppp/pptpd-options
+b)找到ms-dns，取消掉注释
+c)修改为当地DNS或谷歌DNS
+例如：210.22.70.225
+             210.22.70.3
+6.开启内核IP转发
+a)sudo vi  /etc/sysctl.conf
+b)取消掉 net.ipv4.ip_forward=1 这一行的注释.
+c)运行：sudo sysctl -p 使之生效
+
+7.安装iptables，开启NAT转发
+a)sudo apt-get install iptables （如果没有安装iptables）
+b)如已安装，sudo iptables -t nat -I POSTROUTING -j MASQUERADE 
+(开启nat转发)
+
+8.重启服务，让配置生效
+a)sudo service pptpd restart
