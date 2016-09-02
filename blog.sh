@@ -193,3 +193,8 @@ b)如已安装，sudo iptables -t nat -I POSTROUTING -j MASQUERADE
 
 8.重启服务，让配置生效
 a)sudo service pptpd restart
+
+
+#安装crypto的module
+sudo apt-get install m2crypto
+sudo pip install pycrypto
