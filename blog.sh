@@ -198,3 +198,6 @@ a)sudo service pptpd restart
 #安装crypto的module
 sudo apt-get install m2crypto
 sudo pip install pycrypto
+
+#当update时提示the public key is not available:NO_PUBKEY 8D5A09DC9B929006
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8D5A09DC9B929006
