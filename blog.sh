@@ -201,3 +201,7 @@ sudo pip install pycrypto
 
 #当update时提示the public key is not available:NO_PUBKEY 8D5A09DC9B929006
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8D5A09DC9B929006
+
+#scrapy
+sudo apt-get install libssl-dev libxml2-dev libxslt1-dev python-dev zlib1g-dev libevent-dev
+sudo pip install scrapy -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
