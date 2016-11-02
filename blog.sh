@@ -205,3 +205,9 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8D5A09DC9B929006
 #scrapy
 sudo apt-get install libssl-dev libxml2-dev libxslt1-dev python-dev zlib1g-dev libevent-dev
 sudo pip install scrapy -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+
+#add pypi origin
+linux下，修改 /root/.pip/pip.conf (没有就创建一个)， 修改 index-url至tuna，内容如下：
+ [global]
+ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
